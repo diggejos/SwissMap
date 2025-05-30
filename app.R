@@ -12,8 +12,10 @@ Sys.setenv(R_MAX_MEM_SIZE = 512000000)  # 512MB
 
 
 # --- Login credentials ---
-credentials <- list(username = "Tamedia", password = "Jodi_9878")
-
+credentials <- list(
+  username = Sys.getenv("SHINY_USER"),
+  password = Sys.getenv("SHINY_PASS")
+)
 # === Load data ===
 data <- read.csv("input/data_2.csv", sep = ";", fileEncoding = "ISO-8859-1") %>%
   mutate(across(c(Bevoelkerung, TA, BS, BZ, BU, h24, TG, FW, SZ, mean),
